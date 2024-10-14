@@ -1,5 +1,8 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+import seaborn as sns
+
+from sklearn.metrics import confusion_matrix
 
 
 def plot_pie_chart(data: pd.DataFrame, column: str, title: str) -> None:
@@ -24,5 +27,16 @@ def plot_pie_chart(data: pd.DataFrame, column: str, title: str) -> None:
         for label in value_counts.index
     ]
     plt.legend(wedges, legend_labels, title=column, loc="upper left", bbox_to_anchor=(1, 1), fontsize=12)
+    plt.title(title)
+    plt.show()
+
+
+def plot_confusion_matrix(ground_truth, predictions, title) -> None:
+    cm = confusion_matrix(ground_truth, predictions)
+
+    plt.figure(figsize=(8, 6))
+    sns.heatmap(cm, annot=True, fmt='d', cmap='magma', cbar=True)
+    plt.xlabel('Predicted')
+    plt.ylabel('Actual')
     plt.title(title)
     plt.show()
