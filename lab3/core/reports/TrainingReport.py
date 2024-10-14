@@ -6,7 +6,6 @@ from core.reports.ModelInfo import ModelInfo
 class TrainingReport:
     def __init__(self):
         self.models_infos = []
-        pass
 
     def add_model_info(self, model_info: ModelInfo):
         self.models_infos.append(model_info)
